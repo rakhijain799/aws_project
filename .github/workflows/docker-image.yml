@@ -17,6 +17,10 @@ jobs:
       with:
        username: ${{ secrets.DOCKER_USERNAME }}
        passwornd: ${{ secrets.DOCKER_PASSWORD }}
-    - uses: actions/checkout@v4
+    - name : checkout
+      uses: actions/checkout@v4.4.0
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build -t rakhijain1008/aws_project:latest
+    - name: push Docker images
+      uses: docker/build-push-action@v7.4.0
+    
