@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: 
+       - main
+  workflow_dispatch:
+    
+
+jobs:
+  docker-publish:
+    runs-on: ubuntu:latest
+
+    steps:
+    - name: Docker login
+      uses:  docker/login-action@v4.6.0
+      with:
+       username: ${{ secrets.DOCKER_USERNAME }}
+       passwornd: ${{ secrets.DOCKER_PASSWORD }}
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
