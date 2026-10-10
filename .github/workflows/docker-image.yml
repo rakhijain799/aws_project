@@ -20,5 +20,5 @@ jobs:
     - name: Build the Docker image
       run: docker build -t rakhijain1008/aws_project:latest ./frontend
     - name: push Docker images
-      uses: docker/build-push-action@v7.4.0
+      uses: docker push rakhijain1008/aws_project:latest
     
