@@ -4,9 +4,7 @@ on:
   push:
     branches: 
        - main
-  workflow_dispatch:
     
-
 jobs:
   docker-publish:
     runs-on: ubuntu:latest
@@ -20,7 +18,7 @@ jobs:
     - name : checkout
       uses: actions/checkout@v4.4.0
     - name: Build the Docker image
-      run: docker build -t rakhijain1008/aws_project:latest
+      run: docker build -t rakhijain1008/aws_project:latest ./frontend
     - name: push Docker images
       uses: docker/build-push-action@v7.4.0
     
