@@ -27,7 +27,7 @@
          with:
           context:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
 
             #4. connect to ec2 and deploy
 
