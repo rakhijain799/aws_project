@@ -25,7 +25,7 @@
        - name: Build and push Docker image 
          uses: docker/build-push-action@v7.4.0
          with:
-          context:
+          context:./Frontend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
 
@@ -46,8 +46,7 @@
                 --restart unless-stopped \
                 -p 5173:5173 \
                 ${{ secrets.DOCKER_USERNAME }}/frontend:latest
-             
-      
+
      
  
     
