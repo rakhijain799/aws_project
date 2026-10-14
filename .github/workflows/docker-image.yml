@@ -39,7 +39,7 @@
            key: ${{ secrets.EC2_SSH_KEY }}
            script: 
              docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
-             docker stop frontent || true
+             docker stop frontend || true
              docker rm frontend || true
              docker run -d \
                 --name frontend \
