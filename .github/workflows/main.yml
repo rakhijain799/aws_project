@@ -3,7 +3,7 @@
     push:
       branches:
         - main
-      paths: "Frontend/**"
+      paths: "frontend/**"
     workflow_dispatch:
 
    jobs:
@@ -25,7 +25,7 @@
        - name: Build and push Docker image 
          uses: docker/build-push-action@v7.4.0
          with:
-          context:./Frontend
+          context: ./frontend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
 
