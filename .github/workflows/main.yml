@@ -37,7 +37,7 @@
          run: |
            echo "cache miss"
            npm ci
-           working-directory: ./frontend
+         working-directory: ./frontend
 
        - name: Print Cache Status
          if: steps.npm-cache.outputs.cache-hit == 'true'
