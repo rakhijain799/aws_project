@@ -33,13 +33,13 @@
        - name: install dependencies
          if: steps.npm-cache.outputs.cache-hit != 'true'
          run: |
-          echo "cache miss "
-          npm ci
+           echo "cache miss"
+           npm ci
 
        - name: Print Cache Status
          if: steps.npm-cache.outputs.cache-hit == 'true'
          run: |
-          echo "cache hit"
+           echo "cache hit"
       # . Login to docker Hub
        - name: Docker login 
          uses: docker/login-action@v4.6.0
