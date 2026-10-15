@@ -14,7 +14,33 @@
        #1. Download repo code
        - name: Checkout code
          uses: actions/checkout@v4.4.0
-          #2 . Login to docker Hub
+       # set up node.js environment
+       - name: Set up Node.js
+         uses: actions/setup-node@v7.1.0  
+         with:
+           node-version: '22'
+
+         # 4 Cache npm dependencies using a custom 
+       - name: Cache npm dependencies
+         id: npm-cache
+         uses: actions/cache@v5.1.0
+         with:
+           path: /node_modules
+           key: ${{ runnner.os }}-npm-${{ hashFiles('package-lock.json') }}
+           restore-keys: |
+             ${{ runner.os }}-npm-
+         #5 check for cache hit or miss  and install
+       - name: install dependencies
+         if: steps.npm-cache.outputs.cache-hit != 'true'
+         run: |
+          echo "cache miss "
+          npm ci
+
+       - name: Print Cache Status
+         if: steps.npm-cache.outputs.cache-hit == 'true'
+         run: |
+          echo "cache hit"
+      # . Login to docker Hub
        - name: Docker login 
          uses: docker/login-action@v4.6.0
          with:
