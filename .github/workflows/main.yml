@@ -37,7 +37,7 @@
            host: ${{ secrets.EC2_HOST }}
            username: ubuntu
            key: ${{ secrets.EC2_SSH_KEY }}
-           script: 
+           script: |
              docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
              docker stop frontend || true
              docker rm frontend || true
