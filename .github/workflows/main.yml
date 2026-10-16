@@ -38,12 +38,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('frontend/package-lock.json') }}
 
       - name: Print cache status
+        shell: pwsh
         run: |
-          if [ "${{ steps.npm-cache.outputs.cache-hit }}" = "true" ]; then
-            echo "Cache hit"
-          else
-            echo "Cache miss"
-          fi
+          if ($env:CACHE_HIT -eq "true") {
+            Write-Output "Cache hit"
+            }
+          else {
+           Write-Output "Cache miss"
+           }
+          
 
       - name: Install dependencies
         run: npm ci
