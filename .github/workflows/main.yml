@@ -13,10 +13,10 @@ on:
 jobs:
   # 1. Test frontend using multiple Node.js versions
   test:
-    runs-on: ubuntu-latest
-
+    runs-on: ${{matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [20, 22]
 
     steps:
